@@ -1,11 +1,12 @@
 public class Motor {
 
-    private TipoCombustivel tipoMotor;
+    private TipoCombustivel tipoGasolina;
+    private TipoCombustivel tipoAlcool;
     private int consumo; // em quilometros por unidade. Ex: Km/Lt
     private int quilometragem;
 
     public Motor(TipoCombustivel tipoMotor, int consumo) {
-        this.tipoMotor = tipoMotor;
+        this.tipoGasolina = tipoMotor;
         this.consumo = consumo;
     }
 
@@ -14,7 +15,7 @@ public class Motor {
     }
 
     public TipoCombustivel getTipoMotor(){
-        return this.tipoMotor;
+        return this.tipoGasolina;
     }
 
     public int getQuilometragem(){
@@ -31,6 +32,22 @@ public class Motor {
 
     @Override
     public String toString() {
-        return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoMotor + "]";
+        switch (tipoAlcool) {
+            case ALCOOL:
+                return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoAlcool + "]";
+        
+            case FLEX:
+                return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoGasolina + " ou " + tipoAlcool + "]";
+            
+            case DIESEL:
+                return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoAlcool + "]";
+            
+            case GASOLINA:
+                return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoGasolina + "]";  
+            
+            default:
+                break;
+        }
+        return "Motor [consumo=" + consumo + ", quilometragem=" + quilometragem + ", tipoMotor=" + tipoGasolina + "]";
     }
 }
